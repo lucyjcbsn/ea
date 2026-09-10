@@ -4,8 +4,6 @@
 #include <stdbool.h>
 #include <ncurses.h>
 
-const char byte_conv[16] = "123456789abcdef"
-
 char convert(char b_c[1024]){
 
 	char *res_h = NULL;
