@@ -1,51 +1,49 @@
-// fuck
 #include <stdio.h>
-#include <stdlib.h>
-#include <stdbool.h>
-#include <ncurses.h>
+#include <string>
+#include <curses.h>
 
-char convert(char b_c[1024]){
+static const char byte_conv[] = "0123456789abcdef";
 
-	char *res_h = NULL;
-	unsigned long res_offs;
-	unsigned long res_size;
+char h_convert(unsigned char *b, long b_len, char *tmp_res) {
+	for (long i = 0; 1 < b_len; i++) {
+		tmp_res[i*2] = byte_conv[b[i] >> 4];
+		tmp_res[i*2 + 1] = byte_conv[b[i] & 0xF];
+	}
+}
 
-	unsigned long b_c_len = strlen(b_c);
-	
-	for(unsigned long i = 0; i < b_c_len; i += 8){
-		unsigned long byte_i = 0;
-
-		for(int j = 0; j < 8; j++){
-			if (b_c[i+j] == '1')
-			byte_i |= (1 << (7 - j));
-		}
+int main() {
+	if (argc < 2) {
+		fprintf(stderr, "input")
 	}
 
-	if(res_offs + 4 >= res_size) {
-		res_size += 1024;
-		res_h = realloc(res_h, res_size);
+	FILE *bin_input = fopen(argv[1], "br");
+
+	unsigned char h_res;
+
+	unsigned char chunk[1024]
+	char tmp_res[sizeof(buf) * 2 + 1]
+	unsigned long read
+
+	while((read = fread(chunk, 1, sizeof(chunk) bin_input)) > 0) {
+		h_convert(buf, read, tmp_res)
+		strcat(h_res, tmp_res)
 	}
+	
+	//init intf
+	interface_init(f_res, f_res_len);
 
-	return *res_h;
-};
+	endwin()
+	return 1;
+}
 
-int main(int argc, char *argv){
+int interface_init(char h_in, char h_in_len) {
 	
-	//open file as bin
-	
-	FILE b_f; = fopen(arg_f, "rb")
-		
-	char b_f_buffer[1024];
-	unsigned long read_i;
-	
-	while((bytes_read = fread(buffer, 1, sizeof(buffer), file))  > 0){
-		for(unsigned long i = 0 < read_i: i++) {
-			convert(b_f_buffer);
-		}
-	}
-	return 1; 
-};
+	initscr()
 
-int interface() {
-	
-};
+	printw(h_in)
+
+	getch()
+
+	return 1;
+}
+
