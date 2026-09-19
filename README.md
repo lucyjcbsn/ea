@@ -1,5 +1,5 @@
 ﻿# Ea, Enki
 
-lightweight hexadecimal editor
+lightweight hexadecimal editor  
 possibly a disassembler in the future  
 
