@@ -5,8 +5,7 @@
 void b_conv(const unsigned char *chunk, unsigned long chunk_si, char *res) {
 	static char byte_conv[] = "0123456789abcdef";
 	for (unsigned long byte_inc = 0; byte_inc < chunk_si; byte_inc++) {
-	int icount = 1; while(icount <= 2){res[byte_inc * 2 + (icount - 1)] = byte_conv[(chunk[byte_inc] >> ((sizeof(chunk[byte_inc]) * 8) - icount * 4)) & 0xF]; icount++;};
-	}
+	int icount = 1; while(icount <= 2){res[byte_inc * 2 + (icount - 1)] = byte_conv[(chunk[byte_inc] >> ((sizeof(chunk[byte_inc]) * 8) - icount * 4)) & 0xF]; icount++;};}
 }
 
 
