@@ -22,16 +22,18 @@ void b_conv(const unsigned char *chunk, unsigned long chunk_si, char *res) {
 };
 
 
-void h_write(const char *hex, unsigned long hex_si, char *res, struct b_write_args *args, char write[2]) {
-	unsigned long byte_target;
-	if (args->address) {byte_target = (args->address*2); // direct address
-	}else if(args->line) {byte_target = ((args->line*24) + args->line_pos);} //line + line position
-	int i = 0; while(i <= 1){res[byte_target + i] = write[1 + i]; i++;} // write
+void h_write(const char *hex, char *res, struct b_write_args *args, char write[2]) {
+	unsigned long byte_t;
+	if (args->address) {byte_t = (args->address*2); // direct address
+	}else if(args->line) {byte_t = ((args->line*24) + args->line_pos);} //line & line[offset]
+	int i = 0; while(i <= 1){res[byte_t + i] = write[1 + i]; i++;} // write
 };
 
-void h_format(const char *hex, unsigned long hex_si, char *res, struct h_format_args *args) {
-	
+void h_format(const char *hex, char *res, struct h_format_args *args) {
+		
 };
+// h_format ;
+// res[hex * 1.5]
 
 int main(int argc, char *argv[]) {
 	if (argc < 2) {
