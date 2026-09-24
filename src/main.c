@@ -32,7 +32,13 @@ void h_write(const char *hex, char *res, struct b_write_args *args, char write[2
 
 void h_format(const char *hex, char *res, struct h_format_args *args) {
 	// mister president,  a second oneliner has hit the file!
+	if(args->byte_seperate == true) {
 	unsigned long byte_inc = 0; unsigned long res_inc = 0; while(byte_inc > (strlen(res))){int i = 0; while(i <= 1){res[byte_inc + i] = hex[byte_inc + i];} res[byte_inc + 3] = ' '; byte_inc+=2; res_inc+=3;}	
+	} else if(args->line_seperate == true) {
+	// ew nested if statement
+	// if true 24 chars, false, 16
+	if(args->byte_seperate == true){}
+	}
 };
 // h_format ;
 // res[hex * 1.5]
