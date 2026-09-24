@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <stdbool.h>
 
 struct b_write_args {
@@ -17,7 +18,7 @@ struct h_format_args {
 void b_conv(const unsigned char *chunk, unsigned long chunk_si, char *res) {
 	static char byte_conv[] = "0123456789abcdef";
 	for (unsigned long byte_inc = 0; byte_inc < chunk_si; byte_inc++) {
-	//the unholy oneliner of sorrow
+	// the unholy oneliner of sorrow
 	int i = 1; while(i <= 2){res[byte_inc * 2 + (i - 1)] = byte_conv[(chunk[byte_inc] >> ((sizeof(chunk[byte_inc]) * 8) - i * 4)) & 0xF]; i++;};}res[chunk_si * 2] = '\0';
 };
 
@@ -30,7 +31,8 @@ void h_write(const char *hex, char *res, struct b_write_args *args, char write[2
 };
 
 void h_format(const char *hex, char *res, struct h_format_args *args) {
-		
+	// mister president,  a second oneliner has hit the file!
+	unsigned long byte_inc = 0; unsigned long res_inc = 0; while(byte_inc > (strlen(res))){int i = 0; while(i <= 1){res[byte_inc + i] = hex[byte_inc + i];} res[byte_inc + 3] = ' '; byte_inc+=2; res_inc+=3;}	
 };
 // h_format ;
 // res[hex * 1.5]
